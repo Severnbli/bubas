@@ -28,5 +28,11 @@
       <Folder Include="Source\Shared\Utils\" />
       <Folder Include="Source\TelegramBot\Forms\" />
     </ItemGroup>
+    
+    <ItemGroup>
+        <None Update="*.env">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
 
 </Project>
