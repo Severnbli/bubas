@@ -1,3 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿namespace bubas;
 
-Console.WriteLine("Hello, World!");
+internal static class Program
+{
+    private static async Task Main(string[] args)
+    {
+        await Task.CompletedTask;
+    }
+}
