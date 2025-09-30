@@ -10,7 +10,22 @@
     <ItemGroup>
       <PackageReference Include="Autofac" Version="8.4.0" />
       <PackageReference Include="DotNetEnv" Version="3.1.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.9" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.9" />
       <PackageReference Include="TelegramBotBase" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Source\Bootstrap\" />
+      <Folder Include="Source\Shared\Exceptions\" />
+      <Folder Include="Source\Shared\Extensions\" />
+      <Folder Include="Source\TelegramBot\Forms\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <None Update="*.env">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
     </ItemGroup>
 
 </Project>
