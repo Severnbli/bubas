@@ -20,12 +20,9 @@
       <Folder Include="Source\Core\Entities\" />
       <Folder Include="Source\Core\Enums\" />
       <Folder Include="Source\Core\Interfaces\" />
-      <Folder Include="Source\Infrastructure\Data\" />
       <Folder Include="Source\Infrastructure\Repositories\" />
-      <Folder Include="Source\Shared\Constants\" />
       <Folder Include="Source\Shared\Exceptions\" />
       <Folder Include="Source\Shared\Extensions\" />
-      <Folder Include="Source\Shared\Utils\" />
       <Folder Include="Source\TelegramBot\Forms\" />
     </ItemGroup>
     
