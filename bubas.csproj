@@ -16,7 +16,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Source\Bootstrap\" />
+      <Folder Include="Source\Bootstrap\Modules\" />
       <Folder Include="Source\Shared\Exceptions\" />
       <Folder Include="Source\Shared\Extensions\" />
       <Folder Include="Source\TelegramBot\Builders\" />
