@@ -18,7 +18,6 @@
     <ItemGroup>
       <Folder Include="Source\Shared\Exceptions\" />
       <Folder Include="Source\Shared\Extensions\" />
-      <Folder Include="Source\TelegramBot\Builders\" />
       <Folder Include="Source\TelegramBot\Starters\" />
     </ItemGroup>
     
