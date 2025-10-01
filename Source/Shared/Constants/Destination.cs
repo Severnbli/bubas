@@ -4,4 +4,5 @@ public static class Destination
 {
     public static readonly string EnvFilePath = ".env";
     public static readonly string DbName = "DB_NAME";
+    public static readonly string BotApi = "BOT_API";
 }
