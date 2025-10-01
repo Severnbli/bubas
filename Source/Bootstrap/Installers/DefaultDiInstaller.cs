@@ -8,5 +8,6 @@ public class DefaultDiInstaller : BaseDiInstaller
     protected override void RegisterModules(ContainerBuilder builder)
     {
         builder.RegisterModule<DbModule>();
+        builder.RegisterModule<BotModule>();
     }
 }
