@@ -1,8 +1,6 @@
-﻿using Autofac;
-
-namespace bubas.Source.Core.Interfaces;
+﻿namespace bubas.Source.Core.Interfaces;
 
 public interface IDiInstaller
 {
-    public IContainer InstallDiContainer();
+    public IServiceProvider InstallDiContainer();
 }

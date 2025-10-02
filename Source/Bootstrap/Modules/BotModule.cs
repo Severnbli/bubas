@@ -1,15 +1,15 @@
-﻿using Autofac;
-using bubas.Source.Core.Interfaces;
+﻿using bubas.Source.Core.Interfaces;
 using bubas.Source.TelegramBot.Builders;
 using bubas.Source.TelegramBot.Starters;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace bubas.Source.Bootstrap.Modules;
 
-public class BotModule : Module
+public class BotModule : IDiModule
 {
-    protected override void Load(ContainerBuilder builder)
+    public void Load(IServiceCollection serviceCollection)
     {
-        builder.RegisterType<DefaultBotBuilder>().As<IBotBuilder>().SingleInstance();
-        builder.RegisterType<DefaultBotStarter>().As<IBotStarter>().SingleInstance();
+        serviceCollection.AddSingleton<IBotBuilder, DefaultBotBuilder>();
+        serviceCollection.AddSingleton<IBotStarter, DefaultBotStarter>();
     }
 }

@@ -1,30 +1,19 @@
-﻿using Autofac;
-using bubas.Source.Core.Interfaces;
+﻿using bubas.Source.Core.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace bubas.Source.Bootstrap.Installers;
 
 public abstract class BaseDiInstaller : IDiInstaller
 {
-    public IContainer InstallDiContainer()
-    {
-        var builder = new ContainerBuilder();
-        
-        RegisterDependencies(builder);
-        
-        var container = builder.Build(); 
-        return container;
-    }
-
-    protected virtual void RegisterDependencies(ContainerBuilder builder)
+    public IServiceProvider InstallDiContainer()
     {
         var serviceCollection = new ServiceCollection();
         
-        RegisterModules(builder, serviceCollection);
+        RegisterDependencies(serviceCollection);
         
-        var serviceProvider = serviceCollection.BuildServiceProvider();
-        builder.RegisterInstance(serviceProvider).As<IServiceProvider>().SingleInstance();
+        var serviceProvider = serviceCollection.BuildServiceProvider(); 
+        return serviceProvider;
     }
     
-    protected abstract void RegisterModules(ContainerBuilder builder, IServiceCollection services);
+    protected abstract void RegisterDependencies(IServiceCollection serviceCollection);
 }

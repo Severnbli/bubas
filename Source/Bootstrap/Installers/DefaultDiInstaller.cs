@@ -1,15 +1,15 @@
-﻿using Autofac;
-using bubas.Source.Bootstrap.Modules;
+﻿using bubas.Source.Bootstrap.Modules;
+using bubas.Source.Shared.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace bubas.Source.Bootstrap.Installers;
 
 public class DefaultDiInstaller : BaseDiInstaller
 {
-    protected override void RegisterModules(ContainerBuilder builder, IServiceCollection services)
+    protected override void RegisterDependencies(IServiceCollection serviceCollection)
     {
-        builder.RegisterModule<DbModule>();
-        builder.RegisterModule<BotModule>();
-        builder.RegisterModule<ServicesModule>();
+        serviceCollection.RegisterModule<DbModule>();
+        serviceCollection.RegisterModule<BotModule>();
+        serviceCollection.RegisterModule<ServicesModule>();
     }
 }

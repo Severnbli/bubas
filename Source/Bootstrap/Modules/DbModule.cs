@@ -1,20 +1,20 @@
-﻿using Autofac;
-using bubas.Source.Core.Interfaces;
+﻿using bubas.Source.Core.Interfaces;
 using bubas.Source.Infrastructure.Data;
 using bubas.Source.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace bubas.Source.Bootstrap.Modules;
 
-public class DbModule : Module
+public class DbModule : IDiModule
 {
-    protected override void Load(ContainerBuilder builder)
+    public void Load(IServiceCollection serviceCollection)
     {
-        builder.RegisterType<PooledDbContextFactory<BotDbContext>>().AsSelf().SingleInstance();
+        serviceCollection.AddSingleton<PooledDbContextFactory<BotDbContext>>();
         
-        builder.RegisterType<ProfileRepository>().As<IProfileRepository>().SingleInstance();
-        builder.RegisterType<ProfileAnnouncementRepository>().As<IProfileAnnouncementRepository>().SingleInstance();
-        builder.RegisterType<WeatherDataRepository>().As<IWeatherDataRepository>().SingleInstance();
-        builder.RegisterType<StudentScheduleRepository>().As<IStudentScheduleRepository>().SingleInstance();
+        serviceCollection.AddSingleton<IProfileRepository, ProfileRepository>();
+        serviceCollection.AddSingleton<IProfileAnnouncementRepository, ProfileAnnouncementRepository>();
+        serviceCollection.AddSingleton<IWeatherDataRepository, WeatherDataRepository>();
+        serviceCollection.AddSingleton<IStudentScheduleRepository, StudentScheduleRepository>();
     }
 }

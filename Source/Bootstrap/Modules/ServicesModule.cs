@@ -1,10 +1,12 @@
-﻿using Autofac;
+﻿using bubas.Source.Core.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace bubas.Source.Bootstrap.Modules;
 
-public class ServicesModule : Module
+public class ServicesModule : IDiModule
 {
-    protected override void Load(ContainerBuilder builder)
+    public void Load(IServiceCollection serviceCollection)
     {
+        ;
     }
 }
