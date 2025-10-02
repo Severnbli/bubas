@@ -6,7 +6,7 @@ namespace bubas.Source.Shared.Extensions;
 
 public static class BotExtensions
 {
-    public static void AddDefaultCommands(this BotBase bot)
+    public static void AddDefaultCommandsHandler(this BotBase bot)
     {
         bot.BotCommand += async (sender, args) =>
         {
