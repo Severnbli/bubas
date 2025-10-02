@@ -1,4 +1,5 @@
 ﻿using bubas.Source.Core.Interfaces;
+using bubas.Source.Shared.Extensions;
 using bubas.Source.Shared.Utils;
 using bubas.Source.TelegramBot.Forms;
 using TelegramBotBase;
@@ -16,7 +17,7 @@ public class DefaultBotBuilder(IServiceProvider serviceProvider) : IBotBuilder
             .DefaultMessageLoop()
             .WithServiceProvider<StartForm>(serviceProvider)
             .NoProxy()
-            .NoCommands()
+            .CustomCommands(cc => cc.AddDefaultCommandsProviders())
             .UseJSON()
             .UseRussian()
             .UseThreadPool();
