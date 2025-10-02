@@ -13,7 +13,6 @@ public sealed class BotDbContext : DbContext
     
     public BotDbContext()
     {
-        Database.EnsureDeleted();
         Database.EnsureCreated();
     }
 
