@@ -3,6 +3,7 @@ using bubas.Source.Core.Interfaces;
 using bubas.Source.Shared.Constants;
 using DotNetEnv;
 using Microsoft.Extensions.DependencyInjection;
+using TelegramBotBase;
 
 namespace bubas;
 
@@ -12,7 +13,7 @@ internal static class Program
     {
         try
         {
-            await Startup();
+            await ProcessProgram();
         }
         catch (Exception e)
         {
@@ -21,11 +22,16 @@ internal static class Program
         }
     }
 
-    private static async Task Startup()
+    private static async Task ProcessProgram()
     {
         LoadEnvs();
         var container = SetupContainer();
-        await StartBot(container);
+        var bot = await StartBot(container);
+        
+        Console.WriteLine("Bot started!\nPress enter to stop...");
+        Console.ReadLine();
+        
+        await bot.Stop();
     }
 
     private static void LoadEnvs()
@@ -41,7 +47,7 @@ internal static class Program
         return container;
     }
 
-    private static async Task StartBot(IServiceProvider container)
+    private static async Task<BotBase> StartBot(IServiceProvider container)
     {
         var botStarter = container.GetService<IBotStarter>();
 
@@ -50,6 +56,6 @@ internal static class Program
             throw new Exception("Bot starter not found");
         }
         
-        await botStarter.StartBot();
+        return await botStarter.StartBot();
     }
 }
