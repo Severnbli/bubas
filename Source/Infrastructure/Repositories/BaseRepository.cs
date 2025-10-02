@@ -23,6 +23,7 @@ public abstract class BaseRepository
         }
         catch (Exception e)
         {
+            Console.WriteLine(e);
             return defaultValue;
         }
     }
@@ -37,6 +38,7 @@ public abstract class BaseRepository
         }
         catch (Exception e)
         {
+            Console.WriteLine(e);
             return false;
         }
     }
