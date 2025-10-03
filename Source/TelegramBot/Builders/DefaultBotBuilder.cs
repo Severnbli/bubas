@@ -2,6 +2,7 @@
 using bubas.Source.Shared.Extensions;
 using bubas.Source.Shared.Utils;
 using bubas.Source.TelegramBot.Forms;
+using bubas.Source.TelegramBot.Localization;
 using TelegramBotBase;
 using TelegramBotBase.Builder;
 
@@ -19,7 +20,7 @@ public class DefaultBotBuilder(IServiceProvider serviceProvider) : IBotBuilder
             .NoProxy()
             .CustomCommands(cc => cc.AddDefaultCommandsProviders())
             .UseJSON()
-            .UseRussian()
+            .Custom(new Belarusian())
             .UseThreadPool();
 
         var bot = builder.Build();
