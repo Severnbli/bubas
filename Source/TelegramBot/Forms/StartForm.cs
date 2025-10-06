@@ -1,4 +1,6 @@
-﻿using TelegramBotBase.Base;
+﻿using bubas.Source.Shared.Extensions;
+using TelegramBotBase.Args;
+using TelegramBotBase.Base;
 using TelegramBotBase.DependencyInjection;
 using TelegramBotBase.Enums;
 using TelegramBotBase.Form;
@@ -9,42 +11,34 @@ public class StartForm : AutoCleanForm
 {
     public StartForm()
     {
-        DeleteMode = EDeleteMode.OnLeavingForm;
+        DeleteMode = EDeleteMode.None;
         DeleteSide = EDeleteSide.BotOnly;
+
+        Init += StartForm_Init;
+    }
+
+    private Dictionary<string, Func<Task>> _navigationCases = new();
+    private ButtonForm _buttonForm = new();
+
+    private async Task StartForm_Init(object sender, InitEventArgs e)
+    {
+        _navigationCases.TryAdd("letsgo", async () =>
+        {
+            await this.NavigateTo<MainMenuForm>();
+        });
+        
+        _buttonForm.AddButtonRow(new ButtonBase("За справу!", new CallbackData("a", "letsgo").Serialize()));
+        
+        await Task.CompletedTask;
     }
 
     public override async Task Action(MessageResult message)
     {
-        var call = message.GetData<CallbackData>();
-        await message.ConfirmAction();
-
-        if (call == null) return;
-        
-        message.Handled = true;
-
-        switch (call.Value)
-        {
-            case "letsgo":
-            {
-                await this.NavigateTo<MainMenuForm>();
-                break;
-            }
-            default:
-            {
-                message.Handled = false;
-                break;
-            }
-        }
+        await message.ProcessCallbackData(_navigationCases);
     }
     
-    public override Task Render(MessageResult message)
+    public override async Task Render(MessageResult message)
     {
-        var btn = new ButtonForm();
-        
-        btn.AddButtonRow(new ButtonBase("За справу!", new CallbackData("a", "letsgo").Serialize()));
-        
-        Device.Send("Прывітанне, сябрук! ⚡ Усё гатова для старту – за табой чарга!", btn);
-        
-        return Task.CompletedTask;
+        await Device.Send("Прывітанне, сябрук! ⚡ Усё гатова для старту – за табой чарга!", _buttonForm);
     }
 }
