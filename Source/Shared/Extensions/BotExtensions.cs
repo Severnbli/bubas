@@ -1,8 +1,6 @@
 ﻿using bubas.Source.TelegramBot.Forms;
-using Telegram.Bot.Types;
 using TelegramBotBase;
 using TelegramBotBase.Base;
-using TelegramBotBase.Builder.Interfaces;
 using TelegramBotBase.Commands;
 using TelegramBotBase.DependencyInjection;
 using TelegramBotBase.Form;
@@ -42,5 +40,21 @@ public static class BotExtensions
         var call = message.GetData<CallbackData>();
         await message.ConfirmAction();
         return call;
+    }
+
+    public static async Task ProcessCallbackData(this MessageResult message, Dictionary<string, Func<Task>> cases)
+    {
+        var call = await message.GetCallbackData();
+        if (call == null) return;
+
+        message.Handled = true;
+
+        if (!cases.TryGetValue(call.Value, out var action))
+        {
+            message.Handled = false;
+            return;
+        }
+        
+        await action();
     }
 }
