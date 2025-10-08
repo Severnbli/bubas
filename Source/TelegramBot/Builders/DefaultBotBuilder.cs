@@ -19,7 +19,7 @@ public class DefaultBotBuilder(IServiceProvider serviceProvider) : IBotBuilder
             .WithServiceProvider<StartForm>(serviceProvider)
             .NoProxy()
             .CustomCommands(cc => cc.AddDefaultCommandsProviders())
-            .UseJSON()
+            .NoSerialization()
             .Custom(new Belarusian())
             .UseThreadPool();
 
