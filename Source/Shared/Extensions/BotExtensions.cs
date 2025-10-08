@@ -13,6 +13,8 @@ public static class BotExtensions
     {
         bot.BotCommand += async (sender, args) =>
         {
+            args.Handled = true;
+            
             switch (args.Command)
             {
                 case "/main_menu":
