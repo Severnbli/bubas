@@ -20,7 +20,7 @@ public static class BotExtensions
                     await args.Device.ActiveForm.NavigateTo<MainMenuForm>();
                     break;
                 }
-                default:
+                case "start":
                 {
                     await args.Device.ActiveForm.NavigateTo<StartForm>();
                     break;
