@@ -12,7 +12,7 @@ public class MainMenuForm : AutoCleanForm
     public MainMenuForm()
     {
         DeleteMode = EDeleteMode.OnEveryCall;
-        DeleteSide = EDeleteSide.Both;
+        DeleteSide = EDeleteSide.BotOnly;
         
         Init += MainMenuForm_Init;
     }

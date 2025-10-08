@@ -11,8 +11,8 @@ public class StartForm : AutoCleanForm
 {
     public StartForm()
     {
-        DeleteMode = EDeleteMode.OnLeavingForm;
-        DeleteSide = EDeleteSide.Both;
+        DeleteMode = EDeleteMode.OnEveryCall;
+        DeleteSide = EDeleteSide.BotOnly;
 
         Init += StartForm_Init;
     }
