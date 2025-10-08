@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace bubas.Source.Infrastructure.Repositories;
 
-public class ProfileAnnouncementRepository(PooledDbContextFactory<BotDbContext> dbPool) : BaseRepository(dbPool), IProfileAnnouncementRepository
+public class AnnouncementRepository(PooledDbContextFactory<BotDbContext> dbPool) : BaseRepository(dbPool), IAnnouncementRepository
 {
-    public async Task<ProfileAnnouncement?> GetById(long id) =>
+    public async Task<Announcement?> GetById(long id) =>
         await ExecuteAsync(async db => await db.ProfileAnnouncements.FirstOrDefaultAsync(pa => pa.Id == id));
 
-    public async Task<bool> Merge(ProfileAnnouncement entity) => 
+    public async Task<bool> Merge(Announcement entity) => 
         await ExecuteAsync(async db =>
         {
             db.ProfileAnnouncements.Update(entity);
@@ -26,7 +26,7 @@ public class ProfileAnnouncementRepository(PooledDbContextFactory<BotDbContext> 
             await db.SaveChangesAsync();
         });
 
-    public async Task<bool> Delete(ProfileAnnouncement entity) =>
+    public async Task<bool> Delete(Announcement entity) =>
         await ExecuteAsync(async db =>
         {
             db.ProfileAnnouncements.Remove(entity);

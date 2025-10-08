@@ -2,7 +2,7 @@
 
 namespace bubas.Source.Core.Interfaces;
 
-public interface IProfileAnnouncementRepository : IRepository<ProfileAnnouncement>
+public interface IAnnouncementRepository : IRepository<Announcement>
 {
     
 }

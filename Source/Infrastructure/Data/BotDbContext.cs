@@ -7,7 +7,7 @@ namespace bubas.Source.Infrastructure.Data;
 public sealed class BotDbContext : DbContext
 {
     public DbSet<Profile> Profiles { get; set; }
-    public DbSet<ProfileAnnouncement> ProfileAnnouncements { get; set; }
+    public DbSet<Announcement> ProfileAnnouncements { get; set; }
     public DbSet<WeatherData> WeatherData { get; set; }
     public DbSet<StudentSchedule> StudentSchedules { get; set; }
     

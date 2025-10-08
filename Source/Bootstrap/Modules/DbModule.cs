@@ -13,7 +13,7 @@ public class DbModule : IDiModule
         serviceCollection.AddSingleton<PooledDbContextFactory<BotDbContext>>();
         
         serviceCollection.AddSingleton<IProfileRepository, ProfileRepository>();
-        serviceCollection.AddSingleton<IProfileAnnouncementRepository, ProfileAnnouncementRepository>();
+        serviceCollection.AddSingleton<IAnnouncementRepository, AnnouncementRepository>();
         serviceCollection.AddSingleton<IWeatherDataRepository, WeatherDataRepository>();
         serviceCollection.AddSingleton<IStudentScheduleRepository, StudentScheduleRepository>();
     }

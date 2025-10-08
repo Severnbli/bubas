@@ -1,6 +1,6 @@
 ﻿namespace bubas.Source.Core.Entities;
 
-public class ProfileAnnouncement
+public class Announcement
 {
     public long Id { get; set; }
     public TimeOnly TimeOfAnnouncement { get; set; }
