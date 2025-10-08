@@ -15,17 +15,17 @@ public static class BotExtensions
         {
             switch (args.Command)
             {
-                case "main_menu":
+                case "/main_menu":
                 {
                     await args.Device.ActiveForm.NavigateTo<MainMenuForm>();
                     break;
                 }
-                case "start":
+                case "/start":
                 {
                     await args.Device.ActiveForm.NavigateTo<StartForm>();
                     break;
                 }
-                case "help":
+                case "/help":
                 {
                     await args.Device.Send("Тут мусіла б быць нейкая мудрая думка, але замест яе — гэты тэкст.");
                     break;
