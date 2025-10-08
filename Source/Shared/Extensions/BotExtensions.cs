@@ -25,6 +25,11 @@ public static class BotExtensions
                     await args.Device.ActiveForm.NavigateTo<StartForm>();
                     break;
                 }
+                case "help":
+                {
+                    await args.Device.Send("Тут мусіла б быць нейкая мудрая думка, але замест яе — гэты тэкст.");
+                    break;
+                }
             }
         };
     }
@@ -32,6 +37,7 @@ public static class BotExtensions
     public static void AddDefaultCommandsProviders(this List<BotCommandScopeGroup> commandScopeGroups)
     {
         commandScopeGroups.Start("Паздароўкацца з ботам");
+        commandScopeGroups.Help("Адкрыць лістоўку-нагадку");
         commandScopeGroups.Add("main_menu", "Адкрыць галоўнае меню");
     }
 
